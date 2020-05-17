@@ -1,0 +1,36 @@
+@page{
+ size: A5 landscape;
+}
+
+.printTable{
+  border-left:1px solid #333333;
+  border-top:1px solid #333333;
+  margin: 0px auto;
+}
+.printTable th{
+  border-bottom:1px solid #333333;
+  border-right:1px solid #333333;
+  padding: 10px;
+  font-size: 150%;
+  color: #000000;
+  font-weight: bold;
+  text-align: center;
+}
+.tdstyle{
+  border-right:1px solid #333333;
+  border-bottom:1px solid #333333;
+  padding: 2px 5px;
+  text-align: left;
+}
+.signin{
+  vertical-align: bottom;
+  color: #ececec;
+  text-align: center;
+}
+.printTable ol{
+  padding-left: 20px;
+}
+.printTable li{
+  padding: 3px 0;
+}
+
