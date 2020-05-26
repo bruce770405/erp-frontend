@@ -1,8 +1,4 @@
-import {
-  endpoint,
-  // isDebug
-} from '../../config';
-
+import config from '../../config'
 
 export class HttpService {
 
@@ -13,9 +9,9 @@ export class HttpService {
    * @param {*} methodUri 資源uri
    */
   static httpPost(params, succ, fail, methodUri) {
-    let body = convertBody(params);
-    console.log('post', body)
-    fetch(endpoint + methodUri, {
+    let body = convertBody(params)
+    console.debug('post body,,, ', body)
+    fetch(config.endpoint + methodUri, {
         method: 'POST',
         headers: new Headers({
           'Content-Type': 'application/json',
@@ -51,8 +47,7 @@ export class HttpService {
    * @param {*} uri 
    */
   static httpGet(succ, fail, uri) {
-
-    fetch(endpoint + uri, {
+    fetch(config.endpoint + uri, {
         method: 'GET',
         headers: new Headers({
           'Content-Type': 'application/json; charset=utf-8',

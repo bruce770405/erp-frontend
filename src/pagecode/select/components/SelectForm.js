@@ -29,7 +29,7 @@ const SelectForm = (props) => {
               component={Form.Input}
               label="聯絡電話"
               name="phone"
-              placeholder="ex：04-23916552"
+              placeholder="ex：0423916552"
             />
 
           </Form.Group>
@@ -82,8 +82,8 @@ const SelectForm = (props) => {
 
           <Grid textAlign='center' style={{ paddingTop: '20px' }}>
             <Form.Group inline>
-              <Form.Button primary onClick={reset}>查詢</Form.Button>
-              <Form.Button onClick={reset}>清除</Form.Button>
+              <Form.Button primary size='big' onClick={reset}>查詢</Form.Button>
+              <Form.Button size='big' onClick={reset}>清除</Form.Button>
             </Form.Group>
           </Grid>
 

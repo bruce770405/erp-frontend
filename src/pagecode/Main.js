@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Responsive, Segment, Visibility } from 'semantic-ui-react'
+import { Responsive, Segment, Visibility, Divider } from 'semantic-ui-react'
 import { Route } from 'react-router-dom';
 import routes from '../api/routes';
 import HeaderMenus from './home/components/Header';
@@ -44,14 +44,12 @@ export default class Main extends Component {
             );
           })}
 
-
-
-
         </Visibility>
 
 
         {children}
 
+        <Divider hidden />
       </Responsive>
     )
   }

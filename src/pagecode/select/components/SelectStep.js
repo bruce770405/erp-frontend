@@ -1,12 +1,16 @@
-import React from "react";
-import { Grid, Icon, Step } from 'semantic-ui-react'
 
-const SelectStep = () => {
+
+import React from "react";
+import {  Icon, Step } from 'semantic-ui-react'
+import {  Segment } from "semantic-ui-react";
+
+const SelectStep = (props) => {
+
+  const { children } = props
 
   return (
-    <Grid>
-      <Grid.Column floated='left' width={4}>
-        <Step.Group unstackable size='mini'>
+    <div >
+       <Step.Group unstackable size='mini'>
           <Step>
             <Icon name='ordered list' />
             <Step.Content>
@@ -17,13 +21,13 @@ const SelectStep = () => {
             <Icon name='search' />
             <Step.Content>
               <Step.Title>查詢</Step.Title>
-              <Step.Description></Step.Description>
             </Step.Content>
           </Step>
         </Step.Group>
-      </Grid.Column>
-    </Grid>
-
+      <Segment raised>
+        {children}
+      </Segment>
+    </div>
   )
 }
 

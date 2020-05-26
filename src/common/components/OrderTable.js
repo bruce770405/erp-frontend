@@ -1,25 +1,26 @@
 import React from 'react'
 import './OrderTable.css';
-import { formatDate } from '../../api/DateUtils';
 import { Segment } from 'semantic-ui-react';
 
-class OrderTable extends React.Component {
-
+/**
+ * 列印用table.
+ */
+export default class OrderTable extends React.Component {
 
   render() {
-    const { custName, phone, date, amount, device, deviceColor, pin, maintain, imei, about } = this.props.printData;
+    const { orderId, custName, phone, date, time, amount, device, deviceColor, pin, maintain, imei, about } = this.props.printData;
     return (
       <Segment vertical>
         <table className="printTable" cellPadding="0" cellSpacing="0" width="800px">
           <thead>
             <tr>
-              <th colspan="6">Ray + 手機電腦維修</th>
+              <th colSpan="6">睿+ 手機電腦維修</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td className="tdstyle" width="14%">維修單號</td>
-              <td className="tdstyle" colSpan="3">{this.props.orderId}</td>
+              <td className="tdstyle" colSpan="3">{orderId}</td>
               <td className="tdstyle" width="14%">日期</td>
               <td className="tdstyle" width="18%">{date}</td>
             </tr>
@@ -29,7 +30,7 @@ class OrderTable extends React.Component {
               <td className="tdstyle" width="14%">聯繫電話</td>
               <td className="tdstyle">{phone}</td>
               <td className="tdstyle">送修時間</td>
-              <td className="tdstyle">{formatDate(new Date())}</td>
+              <td className="tdstyle">{time}</td>
             </tr>
             <tr>
               <td className="tdstyle">機型</td>
@@ -84,5 +85,3 @@ class OrderTable extends React.Component {
     )
   }
 }
-
-export default OrderTable

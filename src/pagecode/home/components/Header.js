@@ -27,7 +27,7 @@ class HeaderMenu extends Component {
         size='large'
       >
         <Container>
-          <Menu.Item className="nav-link" as={Link} name='home' to="/" active={pathname === '/home' || !pathname} >
+          <Menu.Item className="nav-link" as={Link} name='home' to="/" active={pathname === '/' || !pathname} >
             首頁
           </Menu.Item>
           <Menu.Item as={Link} name='work' to="/work" active={pathname === '/work'} >
@@ -42,7 +42,7 @@ class HeaderMenu extends Component {
             </Button>
             <Button as='a' inverted={!fixed} primary={fixed} style={{ marginLeft: '0.5em' }}>
               Sign Up
-        </Button>
+            </Button>
           </Menu.Item>
         </Container>
       </Menu>

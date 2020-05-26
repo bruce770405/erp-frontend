@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from "react-redux";
-import { Container, Divider, Segment, Loader, Dimmer } from 'semantic-ui-react'
+import { Container, Divider, Loader, Dimmer,Message } from 'semantic-ui-react'
 import SelectForm from './components/SelectForm';
 import CustomerOrdersTable from './components/CustomerOrdersTable';
 import { HttpService } from '../../api/http/HttpService';
@@ -29,21 +29,23 @@ const Select = (props) => {
 
   return (
     <Container>
-
       <Dimmer active={loader}>
         <Loader />
       </Dimmer>
 
       <Divider hidden />
-      <SelectStep />
-      <Divider hidden />
-
-      <Segment raised>
+      <SelectStep>
         <SelectForm onSubmit={query} />
-        <Divider />
-        <CustomerOrdersTable orders={orders}></CustomerOrdersTable>
-      </Segment>
+      </SelectStep>
+      <CustomerOrdersTable orders={orders}></CustomerOrdersTable>
 
+      <Message
+        warning
+        header='注意事項'
+        list={[
+          '未輸入任何查詢條件，預設查近兩年維修紀錄'
+        ]}
+      />
     </Container>
   )
 }
