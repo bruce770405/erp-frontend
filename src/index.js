@@ -8,6 +8,8 @@ import { Provider } from "react-redux";
 import Store from './redux/Store';
 
 import 'semantic-ui-css/semantic.min.css'
+import "bootstrap/dist/css/bootstrap.min.css";
+import "shards-ui/dist/css/shards.min.css"
 
 /**
  * Provider 是 react-redux 中的組件，它會接收上方在 Redux 中創建的 store ，並根據和 component

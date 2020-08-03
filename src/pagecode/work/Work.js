@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { Container, Divider, Loader, Dimmer, Message } from "semantic-ui-react";
+import { Container, Divider, Loader, Dimmer, Message, Segment, Grid } from "semantic-ui-react";
 import OrderForm from './components/OrderForm';
 import { HttpService } from '../../api/http/HttpService';
-import WorkStep from './components/WorkStep';
+import WorkStep from './components/steps/WorkStep';
 import SystemModal from '../../common/components/Modal';
 
 const Work = (props) => {
@@ -36,22 +36,32 @@ const Work = (props) => {
       <Dimmer active={loader}>
         <Loader />
       </Dimmer>
-      <WorkStep >
-        <OrderForm
-          onSubmit={save}
-          insertData={props.location.orderParam}
-        />
-      </WorkStep>
+
+      <WorkStep />
+      <Divider hidden />
+
+      <Grid textAlign='center' style={{ height: '100vh' }}>
+        <Grid.Column style={{ maxWidth: 700 }}>
+          <Segment raised padded={'very'}>
+            <OrderForm
+              onSubmit={save}
+              insertData={props.location.orderParam}
+            />
+          </Segment>
+
+          <Message
+            warning
+            header='注意事項'
+            list={[
+              '聯絡電話請勿輸入任何特殊符號，完整例如： 0423916552',
+              '報價未輸入資料預設儲存0元，待完整報價請由查詢功能更新'
+            ]}
+          />
+        </Grid.Column>
+      </Grid>
+
       <SystemModal message={errorMessage} modalOpen={modal} handleClose={() => setModal(false)} />
 
-      <Message
-        warning
-        header='注意事項'
-        list={[
-          '聯絡電話請勿輸入任何特殊符號，完整例如： 0423916552',
-          '報價未輸入資料預設儲存0元，待完整報價請由查詢功能更新'
-        ]}
-      />
     </Container>
   )
 }

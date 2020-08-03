@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { connect } from "react-redux";
-import { Container, Divider, Loader, Dimmer,Message } from 'semantic-ui-react'
+import { Container, Divider, Loader, Dimmer, Message, Segment } from 'semantic-ui-react'
 import SelectForm from './components/SelectForm';
 import CustomerOrdersTable from './components/CustomerOrdersTable';
 import { HttpService } from '../../api/http/HttpService';
-import SelectStep from './components/SelectStep';
+import SelectStep from './components/steps/SelectStep';
 
 // export const Select = (props, { mobile }) => {
 const Select = (props) => {
@@ -34,9 +34,13 @@ const Select = (props) => {
       </Dimmer>
 
       <Divider hidden />
-      <SelectStep>
+      <SelectStep />
+      <Divider hidden />
+
+      <Segment raised padded={'very'}>
         <SelectForm onSubmit={query} />
-      </SelectStep>
+      </Segment>
+
       <CustomerOrdersTable orders={orders}></CustomerOrdersTable>
 
       <Message

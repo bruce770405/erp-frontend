@@ -36,6 +36,9 @@ class HeaderMenu extends Component {
           <Menu.Item as={Link} name='select' to="/select" active={pathname === '/select'} >
             訂單查詢
           </Menu.Item>
+          <Menu.Item as={Link} name='profit' to="/profit" active={pathname === '/profit'} >
+            損益查詢
+          </Menu.Item>
           <Menu.Item position='right'>
             <Button as='a' inverted={!fixed}>
               Log In
