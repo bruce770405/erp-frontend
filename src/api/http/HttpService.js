@@ -22,13 +22,13 @@ export class HttpService {
         body: body
       })
       .then((response) => {
+        console.log('response :', response);
         //ok 代表狀態碼在範圍 200-299
         if (!response.ok) throw new Error(response.statusText)
         return response.json()
       })
       .then((json) => {
-        console.log('response :', json)
-        if (json.code && json.code === '0000') {
+        if (json.status.errorCode && json.status.errorCode === '0000') {
           succ(json)
         } else {
           throw new Error(json.msg)

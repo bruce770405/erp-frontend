@@ -1,6 +1,7 @@
 import React, { useRef } from "react";
 import { Grid, Button, Header, Container, Divider, Table, Segment } from 'semantic-ui-react';
 import Lottie from 'react-lottie';
+import SelectEditResultStep from './components/steps/SelectEditResultStep';
 import animationData from '../../common/asserts/lottie.data/success-animation.json'
 import OrderTable from '../../common/components/OrderTable';
 import ReactToPrint from 'react-to-print';
@@ -24,7 +25,7 @@ const SelectEditResult = (props) => {
   return (
     <Container>
       <Divider hidden />
-      {/* <WorkResultStep /> */}
+      <SelectEditResultStep />
 
       <Segment raised padded={'very'}>
         <Lottie options={defaultOptions}

@@ -2,8 +2,7 @@
 
 
 import React, { Fragment } from "react";
-import { Header } from 'semantic-ui-react'
-import { Table } from 'semantic-ui-react'
+import { Header, Table } from 'semantic-ui-react'
 
 const SelectDetailData = (props) => {
   return (

@@ -6,6 +6,16 @@ import { DateInput } from 'semantic-ui-calendar-react';
 let SelectForm = (props) => {
 
   const { handleSubmit, reset } = props;
+
+  /**
+   * 修飾form的submit事件.
+   * @param {*} e 
+   */
+  const handleReset = (e) => {
+    e.preventDefault();
+    reset();
+  }
+
   return (
     <div>
 
@@ -78,14 +88,10 @@ let SelectForm = (props) => {
           />
         </Form.Group>
 
-        <Grid textAlign='center' style={{ paddingTop: '20px' }}>
+        <Grid textAlign='center' style={{ paddingTop: '40px' }}>
           <Form.Group inline>
             <Form.Button primary onClick={handleSubmit}><i className="search left icon"></i>查詢</Form.Button>
-            <Form.Button onClick={(e) => {
-              e.preventDefault()
-              reset()
-            }}>
-              <i className="redo left icon"></i>清除</Form.Button>
+            <Form.Button onClick={handleReset}><i className="redo left icon"></i>清除</Form.Button>
           </Form.Group>
         </Grid>
 

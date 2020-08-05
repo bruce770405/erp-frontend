@@ -20,12 +20,12 @@ export default class Main extends Component {
 
     return (
       <Responsive getWidth={getWidth} minWidth={Responsive.onlyTablet.minWidth}>
+       
         <Visibility
           once={false}
           onBottomPassed={this.showFixedMenu}
           onBottomPassedReverse={this.hideFixedMenu}
         >
-
           <Segment inverted textAlign='center' vertical>
             <HeaderMenus />
           </Segment>

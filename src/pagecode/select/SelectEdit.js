@@ -1,8 +1,8 @@
 import React from 'react'
-import { Container, Divider, Loader, Dimmer, Segment, Button, Form, Grid, Icon, Radio, Header, Image } from 'semantic-ui-react'
+import { Container, Divider, Loader, Dimmer, Segment, Button, Form, Grid, Icon, Radio, Header } from 'semantic-ui-react'
 import SelectEditStep from './components/steps/SelectDetailEditStep';
 import creatHistory from 'history/createHashHistory';
-import * as utils from '../../api/OrdersUtils'
+import * as utils from '../../api/OrdersUtils';
 import { HttpService } from '../../api/http/HttpService';
 import SystemModal from '../../common/components/Modal';
 
@@ -63,7 +63,7 @@ export default class SelectEdit extends React.Component {
       })
     }
 
-    HttpService.httpPost(order, success, fail, '/order/update')
+    HttpService.httpPost(order, success, fail, '/order/update');
   }
 
   /**

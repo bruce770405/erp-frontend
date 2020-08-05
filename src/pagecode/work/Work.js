@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import { connect } from "react-redux";
 import { Container, Divider, Loader, Dimmer, Message, Segment, Grid } from "semantic-ui-react";
 import OrderForm from './components/OrderForm';
@@ -31,38 +31,38 @@ const Work = (props) => {
   }
 
   return (
-    <Container>
-      <Divider hidden />
-      <Dimmer active={loader}>
-        <Loader />
-      </Dimmer>
+    <Fragment>
+      <Container>
+        <Divider hidden />
+        <Dimmer active={loader}>
+          <Loader />
+        </Dimmer>
 
-      <WorkStep />
-      <Divider hidden />
+        <WorkStep />
+        <Divider hidden />
 
-      <Grid textAlign='center' style={{ height: '100vh' }}>
-        <Grid.Column style={{ maxWidth: 700 }}>
-          <Segment raised padded={'very'}>
-            <OrderForm
-              onSubmit={save}
-              insertData={props.location.orderParam}
+        <Grid textAlign='center' style={{ height: '100vh' }}>
+          <Grid.Column style={{ maxWidth: 700 }}>
+            <Segment raised padded={'very'}>
+              <OrderForm
+                onSubmit={save}
+                insertData={props.location.orderParam}
+              />
+            </Segment>
+
+            <Message
+              warning
+              header='注意事項'
+              list={[
+                '聯絡電話請勿輸入任何特殊符號，完整例如： 0423916552',
+                '報價未輸入資料預設儲存0元，待完整報價請由查詢功能更新'
+              ]}
             />
-          </Segment>
-
-          <Message
-            warning
-            header='注意事項'
-            list={[
-              '聯絡電話請勿輸入任何特殊符號，完整例如： 0423916552',
-              '報價未輸入資料預設儲存0元，待完整報價請由查詢功能更新'
-            ]}
-          />
-        </Grid.Column>
-      </Grid>
-
+          </Grid.Column>
+        </Grid>
+      </Container>
       <SystemModal message={errorMessage} modalOpen={modal} handleClose={() => setModal(false)} />
-
-    </Container>
+    </Fragment>
   )
 }
 
