@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import { Container, Divider, Loader, Dimmer, Message, Segment, Grid } from "semantic-ui-react";
 import OrderForm from './components/OrderForm';
@@ -8,6 +8,8 @@ import SystemModal from '../../common/components/Modal';
 
 const Work = (props) => {
 
+  // 該 context component 存著 state 和 dispatch 在這裡將他們分開
+  // const [state, dispatch] = useContext(ReducerContext);
   const [loader, setLoader] = useState(false);
   const [modal, setModal] = useState(false);
   const [errorMessage, setErrorMessage] = useState(null);
@@ -24,6 +26,7 @@ const Work = (props) => {
         response: response
       });
     }, fail => {
+      //  dispatch({ type: 'ADD_TODO', payload: { name: listName } })
       setLoader(false)
       setErrorMessage('儲存失敗')
       setModal(true)
@@ -31,38 +34,36 @@ const Work = (props) => {
   }
 
   return (
-    <Fragment>
-      <Container>
-        <Divider hidden />
-        <Dimmer active={loader}>
-          <Loader />
-        </Dimmer>
+    <Container>
+      <Dimmer inline='centered' active={loader}>
+        <Loader />
+      </Dimmer>
 
-        <WorkStep />
-        <Divider hidden />
+      <Divider hidden />
+      <WorkStep />
+      <Divider hidden />
 
-        <Grid textAlign='center' style={{ height: '100vh' }}>
-          <Grid.Column style={{ maxWidth: 700 }}>
-            <Segment raised padded={'very'}>
-              <OrderForm
-                onSubmit={save}
-                insertData={props.location.orderParam}
-              />
-            </Segment>
-
-            <Message
-              warning
-              header='注意事項'
-              list={[
-                '聯絡電話請勿輸入任何特殊符號，完整例如： 0423916552',
-                '報價未輸入資料預設儲存0元，待完整報價請由查詢功能更新'
-              ]}
+      <Grid textAlign='center' style={{ height: '100vh' }}>
+        <Grid.Column style={{ maxWidth: 700 }}>
+          <Segment raised padded={'very'}>
+            <OrderForm
+              onSubmit={save}
+              insertData={props.location.orderParam}
             />
-          </Grid.Column>
-        </Grid>
-      </Container>
+          </Segment>
+
+          <Message
+            warning
+            header='注意事項'
+            list={[
+              '聯絡電話請勿輸入任何特殊符號，完整例如： 0423916552',
+              '報價未輸入資料預設儲存0元，待完整報價請由查詢功能更新'
+            ]}
+          />
+        </Grid.Column>
+      </Grid>
       <SystemModal message={errorMessage} modalOpen={modal} handleClose={() => setModal(false)} />
-    </Fragment>
+    </Container>
   )
 }
 

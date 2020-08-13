@@ -39,6 +39,7 @@ class HeaderMenu extends Component {
           <Menu.Item as={Link} name='profit' to="/profit" active={pathname === '/profit'} >
             損益查詢
           </Menu.Item>
+          <Menu.Item>2020/08/08</Menu.Item>
           <Menu.Item position='right'>
             <Button as='a' inverted={!fixed}>
               Log In

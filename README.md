@@ -1,4 +1,4 @@
-This project was bootstrapped with [Erp App with all users ( create by facebook intergration)](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Erp App with all users ( create by facebook intergration )](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 

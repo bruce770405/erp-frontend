@@ -1,56 +1,58 @@
-import React from 'react'
-import { Container, Divider, Segment, Loader, Dimmer, Button } from 'semantic-ui-react'
+import React, { useRef, Fragment } from 'react'
+import { Container, Divider, Segment, Button } from 'semantic-ui-react'
 import SelectDetailStep from './components/steps/SelectDetailStep';
 import SelectDetailData from './components/SelectDetailData';
 import { Link } from 'react-router-dom';
-import creatHistory from 'history/createHashHistory'
+import OrderTable from '../../common/components/OrderTable';
+import ReactToPrint from 'react-to-print';
 
-export default class SelectDetail extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = { loader: true, order: {} };
+export const SelectDetail = (props) => {
+
+  const componentRef = useRef(null);
+
+  const goBack = (e) => {
+    e.preventDefault();
+    props.history.goBack();
   }
 
-  componentDidMount() {
-    console.log(this.props.location)
-    if (this.props.location.orderParam) {
-      this.setState({
-        order: this.props.location.orderParam,
-        loader: false
-      })
-
-    }
-  }
-
-  render() {
-
-    return (
+  console.log(props.location.orderParam);
+  return (
+    <Fragment>
       <Container>
-        <Dimmer active={this.state.loader}>
-          <Loader />
-        </Dimmer>
-
         <Divider hidden />
         <SelectDetailStep />
+        <Divider hidden />
 
-        <Segment raised padded={'very'}>
-          <SelectDetailData order={this.state.order} />
-
-          <Divider hidden />
-          <Divider hidden />
-          <Button basic color='black' onClick={(e) => {
-            e.preventDefault()
-            const history = creatHistory()
-            history.goBack()
-          }}><i className="arrow left icon"></i>回上一頁</Button>
-          <Button primary as={Link} to={{
-            pathname: '/select/detail/edit',
-            orderParam: this.state.order
-          }} > <i className="edit outline left icon"></i>編輯</Button>
+        <Segment raised>
+          <SelectDetailData order={props.location.orderParam} />
         </Segment>
-      </Container>
-    )
-  }
+
+        <Divider hidden />
+        <Button basic color='black' onClick={goBack}>
+          <i className="arrow left icon"></i>
+          回上一頁
+      </Button>
+        <Button primary as={Link}
+          to={{
+            pathname: '/select/detail/edit',
+            orderParam: props.location.orderParam
+          }}
+        >
+          <i className="edit outline left icon"></i>
+          編輯
+      </Button>
+        < ReactToPrint
+          trigger={() => <Button color='red'><i className="print left icon"></i>列印維修單</Button>}
+          content={() => componentRef.current}
+        />
+      </Container >
+
+      <div style={{ display: 'none' }}>
+        < OrderTable ref={componentRef} printData={props.location.orderParam ? props.location.orderParam : {}} />
+      </div>
+
+    </Fragment>
+  )
 }
 

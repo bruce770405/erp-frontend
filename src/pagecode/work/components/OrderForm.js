@@ -56,7 +56,7 @@ let OrderForm = (props) => {
       <Field
         component={Form.Input}
         label="解鎖密碼"
-        name="pin"
+        name="devicePin"
         placeholder="****"
       />
       <Field
@@ -68,7 +68,7 @@ let OrderForm = (props) => {
       <Field
         component={Form.Input}
         label="維修故障"
-        name="maintain"
+        name="errorDesc"
         placeholder="請輸入維修故障事由"
       />
       <Field

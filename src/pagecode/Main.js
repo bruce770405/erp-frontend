@@ -20,7 +20,7 @@ export default class Main extends Component {
 
     return (
       <Responsive getWidth={getWidth} minWidth={Responsive.onlyTablet.minWidth}>
-       
+
         <Visibility
           once={false}
           onBottomPassed={this.showFixedMenu}

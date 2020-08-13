@@ -1,15 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter, Switch } from 'react-router-dom';
 import { Provider } from "react-redux";
 import Store from './redux/Store';
 
+import './index.css'
 import 'semantic-ui-css/semantic.min.css'
-import "bootstrap/dist/css/bootstrap.min.css";
-import "shards-ui/dist/css/shards.min.css"
 
 /**
  * Provider 是 react-redux 中的組件，它會接收上方在 Redux 中創建的 store ，並根據和 component

@@ -1,5 +1,5 @@
 const dev = {
-  endpoint: 'http://localhost:8080',
+  endpoint: 'http://192.168.50.170:8080',
   isDebug: true
 };
 

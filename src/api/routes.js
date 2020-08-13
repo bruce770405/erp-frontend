@@ -3,7 +3,7 @@ import {
 } from '../pagecode/home/Home';
 import Work from '../pagecode/work/Work';
 import Select from '../pagecode/select/Select';
-import SelectDetail from '../pagecode/select/SelectDetail';
+import {SelectDetail} from '../pagecode/select/SelectDetail';
 import WorkResult from '../pagecode/work/WorkResult';
 import SelectEdit from '../pagecode/select/SelectEdit';
 import SelectEditResult from '../pagecode/select/SelectEditResult';

@@ -71,22 +71,17 @@ export default class SelectEdit extends React.Component {
    */
   handleChange = (e, { value }) => this.setState({ status: value })
 
-  /**
-   * 增加備註 TODO.
-   */
-  addDesc = () => {
-
+  changeValue = (e, { value }) => {
+    const name = e.target.name;
+    console.log('change :', name)
+    this.setState(prev => ({
+      order: {
+        ...prev.order,
+        [name]: value
+      }
+    })
+    )
   }
-
-  renderRadio = field => (
-    <Form.Radio
-      checked={field.input.value === field.radioValue}
-      label={field.label}
-      name={field.input.name}
-      onChange={(e, { checked }) => field.input.onChange(field.radioValue)}
-    />
-  );
-
 
   render() {
 
@@ -115,8 +110,7 @@ export default class SelectEdit extends React.Component {
                         <Header as='h4'>
                           <Icon name='time' color='green' />
                           <Header.Content>
-                            最後更新日期
-                      <Header.Subheader>{this.state.order.updateTime}</Header.Subheader>
+                            最後更新日期<Header.Subheader>{this.state.order.updateTime}</Header.Subheader>
                           </Header.Content>
                         </Header>
                       </Form.Field>
@@ -127,19 +121,13 @@ export default class SelectEdit extends React.Component {
                       </Form.Field>
                     </Form.Group>
 
-                    <Form.Input fluid label="客戶姓名" value={this.state.order.custName} />
-                    <Form.Input fluid label="聯絡電話" value={this.state.order.phone} />
-                    <Form.Input fluid label="維修裝置" value={this.state.order.device} />
-                    <Form.Input fluid label="裝置顏色" value={this.state.order.color} />
-                    <Form.Input fluid label="報價" value={this.state.order.fixAmount} />
-                    <Form.Input fluid label="報修狀況" value={this.state.order.errorDesc} />
-                    <Form.Group widths="equal" inline>
-                      <Form.Input fluid label="備註" value={this.state.order.memo} disabled />
-                      <div style={{ marginTop: 20 }}>
-                        <Icon link bordered inverted color='teal' name='add' onClick={this.addDesc} />
-                      </div>
-                    </Form.Group>
-
+                    <Form.Input fluid label="客戶姓名" name="custName" value={this.state.order.custName} onChange={this.changeValue} />
+                    <Form.Input fluid label="聯絡電話" name="phone" value={this.state.order.phone} onChange={this.changeValue} />
+                    <Form.Input fluid label="維修裝置" name="device" value={this.state.order.device} onChange={this.changeValue} />
+                    <Form.Input fluid label="裝置顏色" name="color" value={this.state.order.color} onChange={this.changeValue} />
+                    <Form.Input fluid label="報價" name="fixAmount" value={this.state.order.fixAmount} onChange={this.changeValue} />
+                    <Form.Input fluid label="報修狀況" name="errorDesc" value={this.state.order.errorDesc} onChange={this.changeValue} />
+                    <Form.Input fluid label="備註" name="memo" value={this.state.order.memo} onChange={this.changeValue} />
 
                     <Header as='h5'>維修狀況 (未選取任何狀態，預設為收件中)</Header>
                     <Form.Group inline style={{ paddingLeft: '10px' }}>
@@ -183,18 +171,16 @@ export default class SelectEdit extends React.Component {
                     </Form.Group>
                   </Form>
 
-
                   <Divider hidden />
                   <Divider hidden />
 
                   <Grid textAlign='center'>
                     <Form.Group inline>
                       <Button basic color='black' onClick={(e) => {
-                        e.preventDefault()
-                        const history = creatHistory()
-                        history.goBack()
+                        e.preventDefault();
+                        this.props.history.goBack();
                       }}><i className="arrow left icon"></i>回上一頁
-                  </Button>
+                      </Button>
                       <Button primary onClick={this.handleSubmit}><i className="save outline left icon"></i>儲存</Button>
                     </Form.Group>
                   </Grid>
